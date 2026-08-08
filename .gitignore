@@ -1,0 +1,32 @@
+# ---- Node / Vite (frontend) ----
+node_modules/
+dist/
+dist-ssr/
+.vite/
+*.local
+
+# ---- Python (backend) ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+
+# ---- Env & secrets ----
+.env
+.env.*
+!.env.example
+
+# ---- Vercel ----
+.vercel
+
+# ---- Editors / OS ----
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+npm-debug.log*
+yarn-error.log*

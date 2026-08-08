@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: taipei-parks-api
+    runtime: python
+    rootDir: backend # build/run only the Flask app, ignore frontend/
+    plan: free # free tier: spins down when idle (~50s cold start)
+    buildCommand: 'pip install -r requirements.txt'
+    startCommand: 'gunicorn app:app --bind 0.0.0.0:$PORT'
+    healthCheckPath: /api/health # Render pings this to confirm the app is live
+    envVars:
+      - key: PYTHON_VERSION
+        value: '3.12.4'

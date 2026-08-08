@@ -1,0 +1,363 @@
+/* ============================================================
+   Taipei Parks Explorer — standalone styles
+   Grey + yellow identity (extracted from the portfolio).
+   ============================================================ */
+:root {
+  color-scheme: light;
+  --accent: #fbcb0a;
+  --accent-ink: #2b2b2b;
+  --bg: #f4f4f2;
+  --bg-alt: #e9e9e5;
+  --panel: #ffffff;
+  --text: #2b2b2b;
+  --muted: #6b6b6b;
+  --border: #d8d8d3;
+  --shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  --radius: 14px;
+  --ease: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  font-family: "Familjen Grotesk", "Noto Sans TC", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px 70px;
+}
+
+/* ---------- Header ---------- */
+.site-head {
+  margin-bottom: 26px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 3px;
+  background: var(--accent);
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.site-head h1 {
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+
+.site-head h1 .mark {
+  background: linear-gradient(transparent 60%, var(--accent) 60%);
+}
+
+.lead {
+  color: var(--muted);
+  max-width: 640px;
+  font-size: 1.05rem;
+}
+
+.api-note {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 10px;
+}
+
+.api-note code {
+  background: var(--bg-alt);
+  padding: 1px 6px;
+  border-radius: 5px;
+  font-size: 0.9em;
+}
+
+/* ---------- Explorer controls ---------- */
+.explorer {
+  margin-top: 22px;
+}
+
+.explorer-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.search-box {
+  flex: 1;
+  min-width: 220px;
+}
+
+.search-box input,
+.explorer-controls select {
+  width: 100%;
+  font: inherit;
+  padding: 11px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  background: var(--panel);
+  color: var(--text);
+}
+
+.explorer-controls select {
+  width: auto;
+  min-width: 160px;
+  cursor: pointer;
+}
+
+.search-box input:focus,
+.explorer-controls select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.explorer-meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 12px 2px 16px;
+  min-height: 1.2em;
+}
+
+.state-msg {
+  padding: 44px 10px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+/* ---------- Parks grid ---------- */
+.parks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.park-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition:
+    transform 0.18s var(--ease),
+    border-color 0.18s var(--ease);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+  font: inherit;
+  color: var(--text);
+}
+
+.park-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+}
+
+.badge {
+  align-self: flex-start;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 9px;
+  border-radius: 6px;
+}
+
+.park-card h4 {
+  font-size: 1.02rem;
+  line-height: 1.25;
+}
+
+.park-card .eng {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: -2px;
+}
+
+.park-card .area {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: auto;
+}
+
+.park-card .area::before {
+  content: "📍 ";
+}
+
+/* ---------- Pagination ---------- */
+.pagination {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.pagination button {
+  font: inherit;
+  font-weight: 600;
+  padding: 9px 18px;
+  border: 1.5px solid var(--text);
+  background: transparent;
+  color: var(--text);
+  border-radius: 10px;
+  cursor: pointer;
+  transition:
+    background 0.18s var(--ease),
+    border-color 0.18s var(--ease),
+    color 0.18s var(--ease);
+}
+
+.pagination button:hover:not(:disabled) {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination .page-info {
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+/* ---------- Modal ---------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 50;
+}
+
+.modal {
+  position: relative;
+  background: var(--panel);
+  border-radius: var(--radius);
+  max-width: 560px;
+  width: 100%;
+  max-height: 88vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.7rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.modal-close:hover {
+  color: var(--text);
+}
+
+.modal-head {
+  padding: 20px 22px 14px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: var(--panel);
+}
+
+.modal-head h3 {
+  margin-top: 10px;
+  font-size: 1.3rem;
+}
+
+.modal-head .eng {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.modal-body {
+  padding: 18px 22px 24px;
+}
+
+.modal-body .overview {
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 480px) {
+  .facts {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fact {
+  font-size: 0.88rem;
+}
+
+.fact .label {
+  display: block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+
+.fact .value {
+  color: var(--text);
+}
+
+/* ---------- Footer ---------- */
+.site-foot {
+  margin-top: 44px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
