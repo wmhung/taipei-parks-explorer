@@ -72,9 +72,6 @@ to its own GitHub repository first.
 3. When it goes live you get a URL like `https://taipei-parks-api.onrender.com`.
    Confirm it works: open `…/api/health` — you should see `{"status":"ok","count":830}`.
 
-> **Free-tier note:** Render's free web services spin down after inactivity, so the
-> first request after idle can take ~50 seconds (cold start). Subsequent requests are fast.
-
 ### 2. Connect the frontend to that backend
 
 Open `frontend/vercel.json` and replace the placeholder host with your real Render URL:
